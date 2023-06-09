@@ -1,0 +1,119 @@
+<main>
+  <div class="login-card">
+    <h1 class="logo">SLACK OVERFLOW</h1>
+    <form class="form" [formGroup]="signupForm">
+      <h4>SIGN UP</h4>
+      <div class="name">
+        <div class="fname">
+          <label for="firstName">Full Name</label>
+          <input
+            type="text"
+            placeholder="enter first name"
+            id="firstName"
+            formControlName="firstName"
+            required
+          />
+          <div
+            *ngIf="
+              signupForm.get('firstName')?.invalid &&
+              (signupForm.get('firstName')?.dirty ||
+                signupForm.get('firstName')?.touched)
+            "
+            class="error-msg"
+          >
+            <p
+              *ngIf="signupForm.get('firstName')?.errors?.['required'] && signupForm.get('firstName')?.touched"
+            >
+              Full name is required
+            </p>
+          </div>
+        </div>
+        <div class="lname">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            placeholder="enter username"
+            id="userName"
+            formControlName="username"
+            required
+          />
+          <div
+            *ngIf="
+              signupForm.get('username')?.invalid &&
+              (signupForm.get('username')?.dirty ||
+                signupForm.get('username')?.touched)
+            "
+            class="error-msg"
+          >
+            <p
+              *ngIf="signupForm.get('username')?.errors?.['required'] && signupForm.get('username')?.touched"
+            >
+              Username is required
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        placeholder="enter email"
+        id="email"
+        formControlName="email"
+        required
+      />
+      <div
+        *ngIf="
+          signupForm.get('email')?.invalid &&
+          (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)
+        "
+        class="error-msg"
+      >
+        <p
+          *ngIf="signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched"
+        >
+          Email is required
+        </p>
+        <p *ngIf="signupForm.get('email')?.errors?.['email']">
+          Invalid email format
+        </p>
+      </div>
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        placeholder="enter password"
+        id="password"
+        formControlName="password"
+        required
+      />
+      <div
+        *ngIf="
+          signupForm.get('password')?.invalid &&
+          (signupForm.get('password')?.dirty ||
+            signupForm.get('password')?.touched)
+        "
+        class="error-msg"
+      >
+        <p
+          *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched"
+        >
+          Password is required
+        </p>
+      </div>
+      <br />
+      <div class="signup-cta">
+        <button (click)="signUp()" [disabled]="signupForm.invalid">
+          Sign Up
+        </button>
+      </div>
+    </form>
+    <div class="out">
+      <span class="forgot-password" routerLink="/signin">
+        Have an Account?
+      </span>
+      <span class="pipe" style="cursor:default">|</span>
+      <span class="sign-up" routerLink="">Continue as Guest</span>
+    </div>
+  </div>
+</main>

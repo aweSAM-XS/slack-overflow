@@ -1,0 +1,125 @@
+<main>
+  <div class="login-card">
+    <h1 class="logo">SLACK OVERFLOW</h1>
+    <form class="form" [formGroup]="signInForm" *ngIf="!forgot">
+      <h4>SIGN IN</h4>
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        placeholder="enter email"
+        name="login"
+        id="email"
+        formControlName="email"
+        required
+      />
+      <div
+        *ngIf="
+          signInForm.get('email')?.invalid &&
+          (signInForm.get('email')?.dirty || signInForm.get('email')?.touched)
+        "
+        class="error-msg"
+      >
+        <p
+          *ngIf="signInForm.get('email')?.errors?.['required'] && signInForm.get('email')?.touched"
+        >
+          Email is required
+        </p>
+        <p *ngIf="signInForm.get('email')?.errors?.['email']">
+          Invalid email format
+        </p>
+      </div>
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        placeholder="enter password"
+        name="login"
+        id="password"
+        formControlName="password"
+        required
+      />
+      <div
+        *ngIf="
+          signInForm.get('password')?.invalid &&
+          signInForm.get('password')?.touched
+        "
+        class="error-msg"
+      >
+        <p *ngIf="signInForm.get('password')?.errors?.['required']">
+          Password is required
+        </p>
+      </div>
+      <div class="error-msg">
+        <p>
+          {{ errorMessage$ | async }}
+        </p>
+      </div>
+      <br />
+      <div class="login-cta">
+        <button
+          class="login-btn"
+          (click)="signIn()"
+          [disabled]="signInForm.invalid"
+        >
+          Sign In
+        </button>
+      </div>
+    </form>
+    <form class="form forgot" *ngIf="forgot" [formGroup]="forgotPasswordForm">
+      <h4>Forgot password?</h4>
+      <hr />
+      <label for="confirm-password">Email Address</label>
+      <input
+        type="email"
+        placeholder="enter email"
+        name="login"
+        id="confirm-password"
+        formControlName="forgotPasswordEmail"
+      />
+      <div
+        *ngIf="
+          forgotPasswordForm.controls['forgotPasswordEmail'].invalid &&
+          (forgotPasswordForm.controls['forgotPasswordEmail'].dirty ||
+            forgotPasswordForm.controls['forgotPasswordEmail'].touched)
+        "
+        class="error-msg"
+      >
+        <p
+          *ngIf="forgotPasswordForm.controls['forgotPasswordEmail']!.errors?.['required']"
+        >
+          Email is required
+        </p>
+        <p
+          *ngIf="forgotPasswordForm.controls['forgotPasswordEmail']!.errors?.['email']"
+        >
+          Invalid email format
+        </p>
+      </div>
+      <div class="continue-cta">
+        <button
+          class="continue-btn"
+          (click)="forgotPassword()"
+          [disabled]="forgotPasswordForm.invalid"
+        >
+          Continue
+        </button>
+      </div>
+    </form>
+    <div class="reset" *ngIf="emailSent">
+      <h3>
+        An email has been sent to your inbox with instructions on reseting your
+        password.
+      </h3>
+    </div>
+    <div class="out">
+      <span
+        class="forgot-password"
+        (click)="forgot ? backToSignIn() : hasForgotten()"
+      >
+        {{ forgot ? "Back to sign in" : "Forgot password" }}
+      </span>
+      <span class="pipe">|</span>
+      <span class="sign-up" routerLink="/signup">Don't Have an Account?</span>
+    </div>
+  </div>
+</main>
