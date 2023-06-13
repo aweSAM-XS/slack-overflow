@@ -1,0 +1,33 @@
+<section>
+  <div class="users-header">
+    <h2>Users</h2>
+    <div class="select">
+      <label for="filter">Filter By:</label>
+      <select name="filter" id="filter">
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+        <option value="Score">Score</option>
+        <option value="count">Number of Answers</option>
+        <option value=""></option>
+      </select>
+    </div>
+  </div>
+  <div class="users" *ngIf="users$ | async as users">
+    <div class="user" *ngFor="let user of users">
+      <div class="profile">
+        <img
+          src="https://robohash.org/{{ user.display_name }}?set=set2"
+          alt="{{ user.display_name }}"
+        />
+        <div class="user-details">
+          <h3>{{ user.display_name }}</h3>
+          <h4>{{ user.location }}</h4>
+          <div class="stats">
+            <h5>{{ user.answered }} answers</h5>
+            <h5>{{ user.accept_rate }} accepted</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

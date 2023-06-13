@@ -10,5 +10,10 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+  seeMenu = false
+
+  showMenu() {
+      this.seeMenu = !this.seeMenu
+  }
 
 }

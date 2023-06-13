@@ -1,0 +1,70 @@
+<section class="ask">
+  <h2>Ask a Question</h2>
+  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="input"></div>
+      <label>Title:</label>
+      <p>Be specific and imagine you're asking a question to another person.</p>
+      <input type="text" formControlName="title" class="form-control" />
+      <div
+        *ngIf="
+          questionForm.get('title')!.invalid &&
+          questionForm.get('title')!.touched
+        "
+        class="error-msg"
+      >
+        <p>Title is required.</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>What are the details of your problem?</label>
+      <p>
+        Introduce the problem and expand on what you put in the title. Minimum
+        20 characters.
+      </p>
+      <textarea
+        rows="15"
+        formControlName="body"
+        class="form-control"
+      ></textarea>
+      <div
+        *ngIf="
+          questionForm.get('body')!.invalid && questionForm.get('body')!.touched
+        "
+        class="error-msg"
+      >
+        <p>Body is required.</p>
+      </div>
+    </div>
+
+    <div class="additional">
+      <div class="tags" *ngIf="tags">
+        <p class="tag" *ngFor="let tag of tags" (click)="removeTag(tag)">
+          {{ tag }}
+        </p>
+      </div>
+      <label for="tags">Tags</label>
+      <input
+        id="tags"
+        name="tags"
+        type="text"
+        [(ngModel)]="newTag"
+        [ngModelOptions]="{ standalone: true }"
+        (keyup.enter)="addTag()"
+        [disabled]="tags.length === 5"
+      />
+      <div class="error-msg" *ngIf="tags.length === 5">
+        <p>You can only add 5 tags. Click on a tag to remove it</p>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="questionForm.invalid"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</section>

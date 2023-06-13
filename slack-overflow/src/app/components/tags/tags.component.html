@@ -1,0 +1,29 @@
+<div class="tags-container">
+  <div class="tags-header">
+    <h2>Tags</h2>
+    <div class="select">
+      <label for="filter">Filter By:</label>
+      <select name="filter" id="filter">
+        <option value="Latest">Latest</option>
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+        <option value="Score">Score</option>
+        <option value="count">Number of Questions</option>
+        <option value=""></option>
+      </select>
+    </div>
+    <button routerLink="/questions/ask" class="primary-btn ask">
+      Ask Question
+    </button>
+  </div>
+  <div class="tags-list" *ngIf="tags$ | async as tags; else loadingTemplate">
+    <div class="tag" *ngFor="let tag of tags">
+      <h3>{{ tag.name }}</h3>
+      <p>{{ tag.description }}</p>
+      <p>{{ tag.count }} Questions</p>
+    </div>
+  </div>
+  <ng-template #loadingTemplate>
+    <div class="loading-spinner">Loading...</div>
+  </ng-template>
+</div>

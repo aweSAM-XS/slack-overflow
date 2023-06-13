@@ -101,6 +101,12 @@
           Password is required
         </p>
       </div>
+      <div class="error-msg">
+        <p>
+          {{ errorMessage$ | async }}
+        </p>
+      </div>
+      <br />
       <br />
       <div class="signup-cta">
         <button (click)="signUp()" [disabled]="signupForm.invalid">
@@ -112,7 +118,7 @@
       <span class="forgot-password" routerLink="/signin">
         Have an Account?
       </span>
-      <span class="pipe" style="cursor:default">|</span>
+      <span class="pipe" style="cursor: default">|</span>
       <span class="sign-up" routerLink="">Continue as Guest</span>
     </div>
   </div>

@@ -1,33 +1,30 @@
 <div class="nav-container">
   <nav>
     <div class="nav-brand">
-      <div class="hamburger-menu-container">
-        <div class="hamburger-menu">
+      <div [ngClass]="{'open': seeMenu}" class="hamburger-menu-container">
+        <div class="hamburger-menu" (click)="showMenu()">
           <div class="line"></div>
           <div class="line"></div>
           <div class="line"></div>
         </div>
         <div class="nav-dropdown-menu">
-          <a href="#" class="current-link">Home</a>
-          <h5>Public</h5>
+          <a routerLink="" routerLinkActive="active">Home</a>
           <ul class="nav-ul">
             <li class="nav-item">
-              <i class="fas fa-globe-europe"></i>
-              <a href="#" class="nav-link">Slack Overflow</a>
+              <a routerLink="questions" class="nav-link">Slack Overflow</a>
             </li>
-            <li class="nav-item"><a href="#" class="nav-link">Tags</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
+            <li class="nav-item"><a routerLink="tags" class="nav-link">Tags</a></li>
+            <li class="nav-item"><a routerLink="users" class="nav-link">Users</a></li>
           </ul>
-          <h5>Find a Job</h5>
+          <h5>Company</h5>
           <ul class="nav-ul">
-            <li class="nav-item"><a href="#" class="nav-link">Jobs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Companies</a></li>
+            <li class="nav-item"><a routerLink="about" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a routerLink="contact" class="nav-link">Contact Us</a></li>
           </ul>
-          <h5>Teams <a href="#">What's this ?</a></h5>
         </div>
       </div>
 
-      <a href="#" class="nav-icon">
+      <a routerLink="" class="nav-icon">
         <img src="../../../assets/icons/logo.svg" alt="logo" class="logo" />
         <div class="nav-icon-text">
           slack <span class="nav-bold-text">overflow</span>
