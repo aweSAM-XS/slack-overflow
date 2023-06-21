@@ -1,0 +1,215 @@
+############Users#####################
+##Add user
+POST http://localhost:6900/users/
+Content-Type: application/json
+
+{
+    "username" : "test",
+    "email": "test@example.com",
+    "password": "Password123!"
+}
+
+
+### Login User
+POST  http://localhost:6900/users/login
+Content-Type: application/json
+
+{
+  "email": "natoner999@aaorsi.com",
+	"password": "awesamity"
+}
+
+### Login Admin
+POST  http://localhost:6900/users/login
+Content-Type: application/json
+
+{
+  "email": "sam.kiprop23@gmail.com",
+	"password": "awesamity"
+}
+
+
+
+### Get all users
+GET  http://localhost:6900/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+
+### Get user by ID
+GET  http://localhost:6900/users/user?user_id=6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzNTE4MiwiZXhwIjoxNjg3NDY0NzgyfQ.IAoYVEbXQdunKvVQRgRjZFmOcPVziEgPFPUr1hcrICw
+
+
+### Get user by email
+GET  http://localhost:6900/users/mail?email=natoner999@aaorsi.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+### Password reset
+POST http://localhost:6900/users/b36d4551-b91a-4e72-ae89-b308deb618c4
+Content-Type: application/json
+
+{
+    "email": "natoner999@aaorsi.com"
+}
+
+### Update user
+PUT http://localhost:6900/users/12965deb-b09e-4dd1-8555-17a6e124c1cc
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzNjg0NywiZXhwIjoxNjg3NDY2NDQ3fQ.8N0dSRAs5amWXJ86qHdpc_hiPbkm-L6cF20RUXc2FUw
+
+{
+	"username": "don_joe",
+    "email": "natoner999@aaorsi.com",
+	"password": "awesamity",
+    "role": "user",
+    "location": "Kirinyaga",
+    "website": "https://awesam.netlify.app",
+    "twitter": "don_joe",
+    "github": "don_joe"
+}
+
+### Delete user
+DELETE  http://localhost:6900/users/12965deb-b09e-4dd1-8555-17a6e124c1cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjViZWQtYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJzYW0ua2lwcm9wMjNAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg3MzM3MjQ3LCJleHAiOjE2ODc0NjY4NDd9.01vVZyOzgnRS14SRhfKJ2P6I6Utn4S10hUdCcSNvk10
+
+
+
+############  Questions  #####################
+### Add question
+POST http://localhost:6900/questions/ask
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+{
+    "question_title":"What did one wall say to the other wall?", 
+   "question_body":"I will meet you at the corner!" ,
+   "tags":[
+    "d28e0985-7c37-4f2c-9b9e-5e10b34cde1a",
+    "c4a7e104-8fb7-4e7b-8f6c-153c0b3ab56c"
+    ]
+   }
+
+### Get all questions
+
+GET http://localhost:6900/questions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+### Get questions by one User 
+GET http://localhost:6900/questions/user/12965deb-b09e-4dd1-8555-17a6e124c1cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+### Get one question
+GET http://localhost:6900/questions/3f95ddfa-d0ba-4f44-8c75-35808519755d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+### Update question
+
+PUT http://localhost:6900/questions/3f95ddfa-d0ba-4f44-8c75-35808519755d
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+{
+    "question_title":"What did one awesome computer say to the other?", 
+   "question_body":"01101101 01100101 00100000 01110011 01101111 00100000 01100001 01110111 01100101 01110011 01100001 01101101" ,
+   "tags":[
+    "6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d",
+    "a93f4e3d-72dc-47b6-a097-3fc1c0c29622",
+    "c4a7e104-8fb7-4e7b-8f6c-153c0b3ab56c",
+    "d28e0985-7c37-4f2c-9b9e-5e10b34cde1a"
+   ]
+   
+   }
+
+### Delete question
+DELETE http://localhost:6900/questions/delete/12965bed-b09e-4dd1-8555-17a6e124c1cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+############  Answers  #####################
+
+#### Create Answer
+POST http://localhost:6900/answers/4a1c6cd1-2250-4fc6-8030-41fe75c165d6
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+{
+    "answer_body": "Because they make up everything! And you can see right through them.And talk about bad attitude! This Atom I know gained all these electrons and it was just so negative all the time… I bet they put a negative spin on everything"
+}
+
+### Get answers of a question 
+GET http://localhost:6900/answers/4a1c6cd1-2250-4fc6-8030-41fe75c165d6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+### Get answers by user
+GET http://localhost:6900/answers/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+### Accept an answer
+POST http://localhost:6900/answers/accept/0da1a6d4-0ccb-4eb5-a9cd-412c3d749448
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+{
+   "question_id":"4a1c6cd1-2250-4fc6-8030-41fe75c165d6" 
+}
+
+
+### Delete an answer
+DELETE  http://localhost:6900/answers/delete/0da1a6d4-0ccb-4eb5-a9cd-412c3d749448
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+############  Comments  #####################
+### Add comment
+POST http://localhost:6900/comments/c4a7e104-8fb7-4e7b-8f6c-153c0b3ab56c
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+{
+    "comment_body": "Yeah, I know two atoms and I also definitely don't trust them"
+   
+}
+
+
+### Get Comments By Answer
+GET http://localhost:6900/comments/c4a7e104-8fb7-4e7b-8f6c-153c0b3ab56c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+### Get Comments By User
+GET http://localhost:6900/comments/user/12965deb-b09e-4dd1-8555-17a6e124c1cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+### Delete Comment
+DELETE  http://localhost:6900/comments/12965bed-b09e-4dd1-8555-17a6e124c1cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+
+############  Votes  #####################
+### Create vote
+POST http://localhost:6900/votes/e0af32e8-8a32-4ff5-8599-eb489e57cc5b
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+{
+    "vote_type": "upvote"
+}
+
+### Get votes by Answer
+GET http://localhost:6900/votes/e0af32e8-8a32-4ff5-8599-eb489e57cc5b
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+
+
+### Get votes by User
+GET http://localhost:6900/votes/user
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+

@@ -1,0 +1,10 @@
+CREATE OR ALTER PROCEDURE GetTagById
+	(
+	@tag_id NVARCHAR(50)
+)
+AS
+BEGIN
+	SELECT *
+	FROM Tags
+	WHERE tag_id = @tag_id
+END

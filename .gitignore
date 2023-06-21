@@ -2,9 +2,11 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+*.js
+query.sql 
 
 # Angular
-/dist/
+/dist/*
 /node_modules/
 .angular-cli.json
 .angular-cli.json.bak

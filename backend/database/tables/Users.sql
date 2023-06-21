@@ -1,0 +1,17 @@
+CREATE TABLE Users
+(
+	user_id NVARCHAR(50) PRIMARY KEY,
+	username NVARCHAR(50) UNIQUE NOT NULL,
+	email NVARCHAR(50) UNIQUE NOT NULL,
+	password NVARCHAR(100) NOT NULL,
+	role NVARCHAR(50) NOT NULL DEFAULT 'user',
+	location NVARCHAR(50),
+	website NVARCHAR(50),
+	twitter NVARCHAR(50),
+	github NVARCHAR(50),
+	created_on DATETIME DEFAULT GETDATE(),
+	is_approved BIT NOT NULL DEFAULT 0,
+	email_sent BIT NOT NULL DEFAULT 0,
+	is_deleted BIT NOT NULL DEFAULT 0,
+	passwordResetRequested BIT NOT NULL DEFAULT 0
+);
