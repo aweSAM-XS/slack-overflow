@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.passwordRoute = exports.emailRoute = void 0;
+const changePassword_1 = require("./../controllers/changePassword");
+const express_1 = require("express");
+const confirmEmail_1 = require("../controllers/confirmEmail");
+exports.emailRoute = (0, express_1.Router)();
+exports.emailRoute.post('/:token', confirmEmail_1.confirmEmail);
+exports.passwordRoute = (0, express_1.Router)();
+exports.passwordRoute.post('/:token', changePassword_1.changePassword);

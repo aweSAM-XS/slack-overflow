@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+                background-color: #f48024;
+                padding: 20px;
+                color: #ffffff;
+                text-align: center;
+                animation: fadeIn 1s;
+            }
+            .title {
+                font-size: 24px;
+                margin-top: 0;
+            }
+            .content {
+                padding: 20px;
+                animation: fadeInUp 1s;
+            }
+            .button {
+                display: inline-block;
+                background-color: #f48024;
+                color: #ffffff;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 4px;
+                margin-top: 20px;
+                animation: fadeInUp 1s;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translate3d(0, 20px, 0);
+                }
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1 class="title">Your Answer was Accepted</h1>
+            </div>
+            <div class="content">
+                <p>Dear <%= username %>,</p>
+                <p>
+                    Congratulations! <em>@<%= asker %></em> has accepted your
+                    answer as the solution to
+                    <strong><%= question_title %></strong>. Your contribution
+                    has been recognized as valuable to the community.
+                </p>
+                <p>
+                    We appreciate your expertise and willingness to help others.
+                    Keep up the great work!
+                </p>
+                <p>
+                    If you have any further questions or need assistance with
+                    anything, feel free to reach out.
+                </p>
+                <p>
+                    Thank you again for being an active member of our community.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

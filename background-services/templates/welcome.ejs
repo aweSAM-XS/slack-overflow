@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            :root {
+                --black-200: #bbc0c4;
+                --black-300: #9fa6ad;
+                --black-350: #9199a1;
+                --black-400: #848d95;
+                --black-500: #6a737c;
+                --black-600: #535a60;
+                --black-700: #3c4146;
+                --black-750: #2f3337;
+                --black-800: #242729;
+                --black-900: #0c0d0e;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+                background-color: #f48024;
+                padding: 20px;
+                color: #ffffff;
+                text-align: center;
+                animation: fadeIn 1s;
+            }
+            .title {
+                font-size: 24px;
+                margin-top: 0;
+            }
+            .content {
+                padding: 20px;
+                animation: fadeInUp 1s;
+            }
+            .button {
+                display: inline-block;
+                background-color: #f48024;
+                color: #ffffff;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 4px;
+                margin-top: 20px;
+                animation: fadeInUp 1s;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translate3d(0, 20px, 0);
+                }
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1 class="title">Welcome to SlackOverflow</h1>
+                <h2 class="subtitle">Questions are everywhere</h2>
+                <h2 class="subtitle">Answers are on SlackOverflow</h2>
+            </div>
+            <div class="content">
+                <p>Dear <%= username %>,</p>
+                <p>
+                    Thank you for joining SlackOverflow We're excited to have
+                    you as a member of our community.
+                </p>
+                <p>
+                    Click this <a href="<%= link %>">link</a> to confirm your
+                    email within 1 hour;
+                </p>
+                <p>
+                    With your approved account, you can ask questions, answer
+                    questions, and participate in discussions on a wide range of
+                    topics.
+                </p>
+                <p>Start exploring and sharing your knowledge today!</p>
+                <a class="button" href="<%= appURL %>">Go to SlackOverflow</a>
+            </div>
+        </div>
+    </body>
+</html>
