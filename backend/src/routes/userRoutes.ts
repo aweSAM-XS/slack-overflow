@@ -21,4 +21,5 @@ UserRoutes.get('/user', authenticateUser, getUserById);
 UserRoutes.get('/mail', authenticateUser, getUserByEmail);
 UserRoutes.put('/:user_id', authenticateUser, updateUser);
 UserRoutes.post('/:user_id', changePassword);
+// UserRoutes.post('/:user_id/reset-password', resetPassword);
 UserRoutes.delete('/:user_id', authenticateAdmin, deleteUser);

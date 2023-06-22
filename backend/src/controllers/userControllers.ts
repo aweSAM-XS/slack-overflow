@@ -187,7 +187,20 @@ export const changePassword = async (req: Request, res: Response) => {
     );
     return res
         .status(200)
-        .json({ message: 'Password reset link sent to email' });
+        .json({ message: 'Password reset link sent to email if it exists' });
+};
+
+// Reset Password
+export const resetPassword = async (req: Request, res: Response) => {
+    try {
+        const {user_id} = req.body
+        const {password} = req.body
+        await DatabaseHelper.exec('ResetPassword', {user_id, password})
+        
+    } catch (error) {
+        
+    }
+
 };
 
 // Delete user

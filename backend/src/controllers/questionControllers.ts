@@ -2,6 +2,7 @@ import { Request,  Response } from 'express';
 import { v4 as uuid } from 'uuid';
 import { Question } from '../interfaces';
 import { DatabaseHelper } from '../databaseHelper';
+import Joi from 'joi';
 
 
 // Add question
@@ -11,6 +12,14 @@ export const addQuestion = async (req: Request, res: Response) => {
         let question_id = uuid();
         const { question_title, question_body, tags, user } = req.body;
         const { user_id } = user;
+        const schema = Joi.object({
+            question_body: Joi.string().required().min(10),
+        });
+
+        const validation = schema.validate({ question_body });
+        if (validation.error) {
+            return res.status(400).json({ message: validation.error.message });
+        }
         await DatabaseHelper.exec('CreateQuestion', {
             question_id,
             user_id,

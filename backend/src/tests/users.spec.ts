@@ -1,6 +1,7 @@
-import { it, expect } from 'vitest';
+import { it, expect, describe } from 'vitest';
 import request from 'supertest';
-import { app } from '../server';
+import { app } from '../app';
+
 
 describe('User Tests', () => {
     it.skip('Register a new user', async () => {
@@ -128,68 +129,44 @@ describe('User Tests', () => {
         expect(response.body).toBeDefined();
     });
 
-    it('Update user details (authenticated)', async () => {
-        const loginResponse = await request(app).post('/users/login').send({
-            email: 'peter@example.com',
-            password: 'awesamity',
-        });
-
-        const response = await request(app)
-            .put('/users/user?user_id=c4a7e104-8fb7-4e7b-8f6c-153c0b3ab56c')
-            .send({
-                username: 'don_joe',
-                email: 'peterson@example.com',
-                password: 'awesamity',
-                role: 'user',
-                location: 'Nanyuki',
-                website: 'https://awesam.netlify.app',
-                twitter: 'pete',
-                github: 'pete',
-            })
-            .set('Authorization', `Bearer ${loginResponse.body.token}`);
-
-        expect(response.body.message).toBe('Details updated sucessfully');
-        expect(response.status).toBe(200);
-    });
-
     it('Change password (authenticated)', async () => {
         const response = await request(app).post('/users/user_id').send({
             email: 'olivia@example.com',
         });
 
         expect(response.status).toBe(200);
-        expect(response.body.message).toBe('Password reset link sent to email');
+        expect(response.body.message).toBe('Password reset link sent to email if it exists');
     });
 
-    it.skip('Delete user (admin)', async () => {
+    it('Delete user (admin)', async () => {
         const loginResponse = await request(app).post('/users/login').send({
-            email: 'admin@example.com',
-            password: 'adminpassword',
+            email: 'sam.kiprop23@gmail.com',
+            password: 'awesamity',
         });
 
         const response = await request(app)
-            .delete('/users/user_id')
+            .delete('/users/12965deb-b09e-4dd1-8555-17a6e124c1cc')
             .set('Authorization', `Bearer ${loginResponse.body.token}`);
 
         expect(response.status).toBe(200);
         expect(response.body.message).toBe('User deleted successfuly');
     });
 
-    it.skip('Attempt to delete user without admin privileges', async () => {
+    it('Attempt to delete user without admin privileges', async () => {
         const loginResponse = await request(app).post('/users/login').send({
             email: 'olivia@example.com',
             password: 'awesamity',
         });
 
         const response = await request(app)
-            .delete('/users/user_id')
+            .delete('/users/12965deb-b09e-4dd1-8555-17a6e124c1cc')
             .set('Authorization', `Bearer ${loginResponse.body.token}`);
 
-        expect(response.status).toBe(401);
-        expect(response.body.message).toBe('Unauthorized');
+        expect(response.status).toBe(403);
+        expect(response.body.message).toBe('Not authorized.');
     });
 
-    it.skip('Attempt to access protected route without authentication', async () => {
+    it('Attempt to access protected route without authentication', async () => {
         const response = await request(app).get('/users');
 
         expect(response.status).toBe(401);

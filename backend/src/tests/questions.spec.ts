@@ -1,110 +1,131 @@
 import { it, expect, describe } from 'vitest';
 import request from 'supertest';
-import { app } from '../server';
+import { app } from '../app';
 
 describe('Question Tests', () => {
-    it.skip('Add question', async () => {
+    it('Add question', async () => {
         const response = await request(app)
             .post('/questions/ask')
-            .set('Authorization', 'Bearer <token>')
+            .set(
+                'Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg'
+            )
             .send({
                 question_title: 'Test question',
                 question_body: 'This is a test question',
-                tags: ['tag1', 'tag2'],
+                tags: [
+                    '12965bed-b09e-4dd1-8555-17a6e124c1cc',
+                    '12965bed-b09e-4dd1-8555-17a6e124c1cc',
+                ],
                 user: { user_id: 'user123' },
             });
 
         expect(response.status).toBe(200);
-        expect(response.body.message).toBe('Question submitted successfully');
+        expect(response.body.message).toBe('Question submited successfully');
     });
 
-    it.skip('Get all questions', async () => {
+    it('Get all questions', async () => {
         const response = await request(app)
             .get('/questions')
-            .set('Authorization', 'Bearer <token>');
+            .set(
+                'Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg'
+            );
 
         expect(response.status).toBe(200);
         expect(response.body.length).toBeGreaterThan(0);
     });
 
-    it.skip('Get user questions', async () => {
+    it('Get user questions', async () => {
         const response = await request(app)
-            .get('/questions/user/user123')
-            .set('Authorization', 'Bearer <token>');
+            .get('/questions/user/12965deb-b09e-4dd1-8555-17a6e124c1cc')
+            .set(
+                'Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg'
+            );
 
         expect(response.status).toBe(200);
         expect(response.body.length).toBeGreaterThan(0);
     });
 
-    it.skip('Get question by ID', async () => {
+    it('Get question by ID', async () => {
         const response = await request(app)
-            .get('/questions/question_id')
-            .set('Authorization', 'Bearer <token>');
+            .get('/questions/6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d')
+            .set(
+                'Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg'
+            );
 
         expect(response.status).toBe(200);
         expect(response.body).toBeDefined();
     });
 
-    it.skip('Update question', async () => {
+    it('Update question', async () => {
         const response = await request(app)
-            .put('/questions/question_id')
-            .set('Authorization', 'Bearer <token>')
+            .put('/questions/6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d')
+            .set(
+                'Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg'
+            )
             .send({
                 question_title: 'Updated question',
                 question_body: 'This is an updated test question',
-                tags: ['tag1', 'tag2'],
+                tags: [
+                    '12965bed-b09e-4dd1-8555-17a6e124c1cc',
+                    '4a1c6cd1-2250-4fc6-8030-41fe75c165d6',
+                ],
             });
 
         expect(response.status).toBe(201);
-        expect(response.body.message).toBe('Question updated successfully');
+        expect(response.body.message).toBe('Question Updated successfully');
     });
 
     it.skip('Delete question', async () => {
         const response = await request(app)
-            .delete('/questions/delete/question_id')
-            .set('Authorization', 'Bearer <token>');
+            .delete('/questions/delete/6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d')
+            .set(
+                'Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg'
+            );
 
         expect(response.status).toBe(200);
         expect(response.body.message).toBe('Deleted successfully');
     });
 
-    it.skip('Attempt to delete question without authorization', async () => {
+    it('Attempt to delete question without authorization', async () => {
         const response = await request(app).delete(
-            '/questions/delete/question_id'
+            '/questions/delete/6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d'
         );
 
         expect(response.status).toBe(401);
         expect(response.body.message).toBe('Unauthorized');
     });
 
-    it.skip('Attempt to update question without authorization', async () => {
+    it('Attempt to update question without authorization', async () => {
         const response = await request(app)
-            .put('/questions/question_id')
+            .put('/questions/6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d')
             .send({
                 question_title: 'Updated question',
                 question_body: 'This is an updated test question',
-                tags: ['tag1', 'tag2'],
+                tags: [
+                    '4a1c6cd1-2250-4fc6-8030-41fe75c165d6',
+                    '12965bed-b09e-4dd1-8555-17a6e124c1cc',
+                ],
             });
 
         expect(response.status).toBe(401);
         expect(response.body.message).toBe('Unauthorized');
     });
 
-    it.skip('Get question by ID not found', async () => {
+    it('Get question by ID not found', async () => {
         const response = await request(app)
-            .get('/questions/nonexistent_question_id')
-            .set('Authorization', 'Bearer <token>');
+            .get('/questions/nonexistent_6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d')
+            .set(
+                'Authorization',
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg'
+            );
 
         expect(response.status).toBe(404);
         expect(response.body.message).toBe('Question Not Found');
-    });
-
-    it.skip('Get all questions with error', async () => {
-        const response = await request(app)
-            .get('/questions')
-            .set('Authorization', 'Bearer <token>');
-
-        expect(response.status).toBe(500);
-        expect(response.body.message).toBeDefined();
     });
 });
