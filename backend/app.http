@@ -4,9 +4,9 @@ POST http://localhost:6900/users/
 Content-Type: application/json
 
 {
-    "username" : "test",
-    "email": "test@example.com",
-    "password": "Password123!"
+    "username" : "saint_joe",
+    "email": "jonathanndambuki16@gmail.com",
+    "password": "Password123"
 }
 
 
@@ -15,8 +15,8 @@ POST  http://localhost:6900/users/login
 Content-Type: application/json
 
 {
-  "email": "natoner999@aaorsi.com",
-	"password": "awesamity"
+ "email": "peter@example.com",
+"password": "awesamity"
 }
 
 ### Login Admin
@@ -37,7 +37,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 
 
 ### Get user by ID
-GET  http://localhost:6900/users/user?user_id=6fc5ac4f-cd3d-4f03-950e-722e2d0e2e1d
+GET  http://localhost:6900/users/user?user_id=c4a7e104-8fb7-4e7b-8f6c-153c0b3ab56c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzNTE4MiwiZXhwIjoxNjg3NDY0NzgyfQ.IAoYVEbXQdunKvVQRgRjZFmOcPVziEgPFPUr1hcrICw
 
 

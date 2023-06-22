@@ -131,7 +131,7 @@ export const getUserById: RequestHandler = async (req, res) => {
         const { user_id } = req.query as { user_id: string };
 
         const user = (await DatabaseHelper.exec('GetUserByID', { user_id }))
-            .recordset;
+            .recordset[0];
         if (user) {
             return res.status(200).json(user);
         }

@@ -6,7 +6,7 @@
         "start:build": "tsc -w",
         "start:run": "nodemon ./dist/server.js",
         "start": "concurrently npm:start:*",
-        "test": "jest"
+        "test:watch": "vitest"
     },
     "author": "aweSAM-XS",
     "license": "ISC",
@@ -34,9 +34,8 @@
         "@types/sinon": "^10.0.15",
         "@types/supertest": "^2.0.12",
         "@types/uuid": "^9.0.1",
-        "chai": "^4.3.7",
-        "mocha": "^10.2.0",
         "sinon": "^15.2.0",
-        "supertest": "^6.3.3"
+        "supertest": "^6.3.3",
+        "vitest": "^0.32.2"
     }
 }
