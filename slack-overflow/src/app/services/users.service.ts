@@ -1,22 +1,26 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { User } from '../interface';
+import { url, headers } from './utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private url = 'http://localhost:3000/users';
-  private http = inject(HttpClient)
+  private url = `${url}/users`;
+  private headers = headers;
+  private http = inject(HttpClient);
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+  getUsers(pageSize: number, pageNumber: number): Observable<User[]> {
+    const params = new HttpParams()
+      .set('page_size', pageSize)
+      .set('page_number', pageNumber);
+
+    return this.http.get<User[]>(this.url, { headers: this.headers, params });
   }
 
-  getUser(id: string): Observable<User | undefined> {
-    return this.getUsers().pipe(
-      map((users: User[]) => users.find((u) => u.user_id === id))
-    );
+  getUser(id: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/${id}`, { headers: this.headers });
   }
 }

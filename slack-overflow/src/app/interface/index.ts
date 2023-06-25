@@ -8,15 +8,19 @@ export interface AuthState {
 
 export interface User {
   user_id: string;
-  user_type: string;
-  asked: number;
-  answered: number;
-  accept_rate: number;
-  profile_image: string;
-  display_name: string;
-  location: string;
-  creation_date: number;
-  links: UserLinks;
+  username: string;
+  email: string;
+  password: string;
+  role: string;
+  location?: string;
+  website?: string;
+  twitter?: string;
+  github?: string;
+  created_on: Date;
+  is_approved: boolean;
+  email_sent: boolean;
+  is_deleted: boolean;
+  passwordResetRequested: boolean;
 }
 
 export interface UserLinks {
@@ -26,7 +30,6 @@ export interface UserLinks {
 }
 
 export interface UserSignUp {
-  firstName: string;
   username: string;
   email: string;
   password: string;
@@ -56,17 +59,12 @@ export interface userState {
 
 export interface Question {
   tags: string[];
-  owner_id: string;
-  is_answered: boolean;
-  view_count: number;
-  accepted_answer_id: string;
-  answer_count: number;
-  score: number;
+  user_id: string;
   creation_date: number;
   last_edit_date: number;
   question_id: string;
-  title: string;
-  body: string;
+  question_title: string;
+  question_body: string;
 }
 
 export interface Answer {
@@ -80,9 +78,8 @@ export interface Answer {
 }
 
 export interface Tag {
-  name: string;
-  count: number;
-  description: string;
+  tag_name: string;
+  Tag_description: string;
 }
 
 export interface Comment {

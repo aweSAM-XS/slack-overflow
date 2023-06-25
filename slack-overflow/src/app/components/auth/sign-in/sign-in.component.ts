@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AppState } from '../../../store/app.state';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
@@ -29,7 +30,7 @@ export class SignInComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private store: Store<AppState>
+    private store: Store<AppState>,
   ) {}
 
   ngOnInit() {
@@ -41,7 +42,7 @@ export class SignInComponent implements OnInit {
     this.emailSent = false;
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
     });
     this.forgotPasswordForm = this.formBuilder.group({
       forgotPasswordEmail: ['', [Validators.required, Validators.email]],

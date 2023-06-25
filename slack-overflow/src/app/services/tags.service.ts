@@ -1,17 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Tag } from '../interface';
+import { url, headers } from './utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TagsService {
-  private url = 'http://localhost:3000/tags';
-  http = inject(HttpClient)
+  private url = `${url}/tags`;
+  private headers = headers
 
+  http = inject(HttpClient);
 
   getTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>(this.url);
+    return this.http.get<Tag[]>(this.url, { headers: this.headers });
   }
 }

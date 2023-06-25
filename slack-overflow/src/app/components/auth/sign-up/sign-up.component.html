@@ -3,55 +3,27 @@
     <h1 class="logo">SLACK OVERFLOW</h1>
     <form class="form" [formGroup]="signupForm">
       <h4>SIGN UP</h4>
-      <div class="name">
-        <div class="fname">
-          <label for="firstName">Full Name</label>
-          <input
-            type="text"
-            placeholder="enter first name"
-            id="firstName"
-            formControlName="firstName"
-            required
-          />
-          <div
-            *ngIf="
-              signupForm.get('firstName')?.invalid &&
-              (signupForm.get('firstName')?.dirty ||
-                signupForm.get('firstName')?.touched)
-            "
-            class="error-msg"
-          >
-            <p
-              *ngIf="signupForm.get('firstName')?.errors?.['required'] && signupForm.get('firstName')?.touched"
-            >
-              Full name is required
-            </p>
-          </div>
-        </div>
-        <div class="lname">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            placeholder="enter username"
-            id="userName"
-            formControlName="username"
-            required
-          />
-          <div
-            *ngIf="
-              signupForm.get('username')?.invalid &&
-              (signupForm.get('username')?.dirty ||
-                signupForm.get('username')?.touched)
-            "
-            class="error-msg"
-          >
-            <p
-              *ngIf="signupForm.get('username')?.errors?.['required'] && signupForm.get('username')?.touched"
-            >
-              Username is required
-            </p>
-          </div>
-        </div>
+      <label for="username">Username</label>
+      <input
+        type="text"
+        placeholder="enter username"
+        id="username"
+        formControlName="username"
+        required
+      />
+      <div
+        *ngIf="
+          signupForm.get('username')?.invalid &&
+          (signupForm.get('username')?.dirty ||
+            signupForm.get('username')?.touched)
+        "
+        class="error-msg"
+      >
+        <p
+          *ngIf="signupForm.get('username')?.errors?.['required'] && signupForm.get('username')?.touched"
+        >
+          Username is required
+        </p>
       </div>
 
       <label for="email">Email Address</label>
@@ -99,6 +71,11 @@
           *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched"
         >
           Password is required
+        </p>
+        <p
+          *ngIf="signupForm.get('password')?.errors?.['pattern'] && signupForm.get('password')?.touched"
+        >
+          Password isn't strong enough
         </p>
       </div>
       <div class="error-msg">

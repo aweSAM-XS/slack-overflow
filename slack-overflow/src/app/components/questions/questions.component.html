@@ -20,13 +20,13 @@
   >
     <div class="question" *ngFor="let question of questions">
       <div class="meta">
-        <p>{{ question.score }} votes</p>
-        <p>{{ question.answer_count }} answers</p>
-        <p>{{ question.score }} views</p>
+        <p>20 votes</p>
+        <p>69 answers</p>
+        <p>45 views</p>
       </div>
       <div class="question-content">
-        <h3>{{ question.title }}</h3>
-        <p>{{ question.body }}</p>
+        <h3>{{ question.question_title }}</h3>
+        <p>{{ question.question_body }}</p>
         <div class="tags">
           <ng-container *ngFor="let tag of question.tags">
             <p class="tag">{{ tag }}</p>

@@ -23,7 +23,19 @@ export class AuthEffects {
             return AuthActions.signUpSuccess({ message: response.message });
           }),
           catchError((error) => {
-            return of(AuthActions.signUpFailure({ error: error.message }));
+            let errorMessage = error?.error?.message || 'An error occurred.';
+            if (errorMessage.indexOf('Violation of UNIQUE KEY') !== -1) {
+              const startIndex = errorMessage.indexOf('(');
+              const endIndex = errorMessage.indexOf(')');
+              const duplicateValue = errorMessage.substring(
+                startIndex + 1,
+                endIndex
+              );
+
+              errorMessage = `Someone is already using ${duplicateValue}`;
+            }
+
+            return of(AuthActions.signUpFailure({ error: errorMessage }));
           })
         )
       )
@@ -42,7 +54,11 @@ export class AuthEffects {
             return AuthActions.signInSuccess({ message: response.message });
           }),
           catchError((error) => {
-            return of(AuthActions.signInFailure({ error: error.message }));
+            return of(
+              AuthActions.signInFailure({
+                error: error?.error?.message || 'An error occurred.',
+              })
+            );
           })
         )
       )

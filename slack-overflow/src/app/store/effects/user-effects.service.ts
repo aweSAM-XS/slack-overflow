@@ -13,7 +13,7 @@ export class UserEffects {
     return this.actions$.pipe(
       ofType(UserActions.getUsers),
       mergeMap(() => {
-        return this.usersService.getUsers().pipe(
+        return this.usersService.getUsers(10,1).pipe(
           map((users) => UserActions.getUsersSuccess({ users })),
           catchError((error) => of(UserActions.getUsersFailure({ error })))
         );

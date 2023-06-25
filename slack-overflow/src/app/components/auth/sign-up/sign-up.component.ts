@@ -30,10 +30,9 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
     });
   }
 
@@ -41,8 +40,8 @@ export class SignUpComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     }
-    const { firstName, username, email, password } = this.signupForm.value;
-    const payload = { firstName, username, email, password };
+    const { username, email, password } = this.signupForm.value;
+    const payload = { username, email, password };
     this.store.dispatch(AuthActions.signUp({ payload }));
     this.errorMessage$ = this.store.select(
       (state) => state.auth.error

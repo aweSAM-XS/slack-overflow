@@ -17,7 +17,7 @@ export class QuestionEffects {
     return this.actions$.pipe(
       ofType(QuestionActions.getQuestions),
       mergeMap(() => {
-        return this.questionService.getQuestions().pipe(
+        return this.questionService.getQuestions(10, 1).pipe(
           map((questions) =>
             QuestionActions.getQuestionsSuccess({ questions })
           ),

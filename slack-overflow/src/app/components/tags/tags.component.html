@@ -18,9 +18,8 @@
   </div>
   <div class="tags-list" *ngIf="tags$ | async as tags; else loadingTemplate">
     <div class="tag" *ngFor="let tag of tags">
-      <h3>{{ tag.name }}</h3>
-      <p>{{ tag.description }}</p>
-      <p>{{ tag.count }} Questions</p>
+      <h3>{{ tag.tag_name }}</h3>
+      <p>{{ tag.Tag_description }}</p>
     </div>
   </div>
   <ng-template #loadingTemplate>
