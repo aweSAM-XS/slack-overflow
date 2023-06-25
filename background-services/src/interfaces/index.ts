@@ -23,9 +23,18 @@ export interface MailOptions {
     html: string;
 }
 
+// export interface MailConfig {
+//     host: string;
+//     service: string;
+//     port: number;
+//     auth: {
+//         [k: string]: string;
+//     };
+// }
+
 export interface MailConfig {
     host: string;
-    service: string;
+    // service: string;
     port: number;
     auth: {
         [k: string]: string;

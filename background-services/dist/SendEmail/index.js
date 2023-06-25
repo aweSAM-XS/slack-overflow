@@ -20,9 +20,17 @@ const path_1 = __importDefault(require("path"));
 const DatabaseHelper_1 = require("../DatabaseHelper");
 const ejs_1 = __importDefault(require("ejs"));
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../../.env') });
+// let config: MailConfig = {
+//     host: 'smtp.google.com',
+//     service: 'gmail',
+//     port: 587,
+//     auth: {
+//         user: process.env.EMAIL as string,
+//         pass: process.env.EMAIL_PWD as string,
+//     },
+// };
 let config = {
-    host: 'smtp.google.com',
-    service: "gmail",
+    host: 'smtp.awesam.tech',
     port: 587,
     auth: {
         user: process.env.EMAIL,
@@ -53,7 +61,7 @@ const sendWelcomeEmail = (users) => __awaiter(void 0, void 0, void 0, function* 
         ejs_1.default.renderFile('templates/welcome.ejs', {
             username: user.username,
             link: `http://localhost:8008/confirm-email/${token}`,
-            appURL: 'https://overflow.awesam.tech/login',
+            appURL: 'https://overflow.awesam.tech/home',
         }, (error, html) => __awaiter(void 0, void 0, void 0, function* () {
             if (error) {
                 console.log(error.message);
@@ -64,7 +72,7 @@ const sendWelcomeEmail = (users) => __awaiter(void 0, void 0, void 0, function* 
                     const message = {
                         from: process.env.EMAIL,
                         to: user.email,
-                        subject: 'Welcome to our Site',
+                        subject: 'Welcome to SlackOverflow',
                         html,
                     };
                     yield (0, exports.sendMail)(message, 'Welcome');
@@ -111,7 +119,11 @@ const sendPasswordResetEmail = (users) => __awaiter(void 0, void 0, void 0, func
 exports.sendPasswordResetEmail = sendPasswordResetEmail;
 const sendAnswerAcceptedEmail = (answers) => __awaiter(void 0, void 0, void 0, function* () {
     for (let answer of answers) {
-        ejs_1.default.renderFile('templates/answerAccepted.ejs', { username: answer.username, question_title: answer.question_title, asker: answer.question_username }, (err, html) => __awaiter(void 0, void 0, void 0, function* () {
+        ejs_1.default.renderFile('templates/answerAccepted.ejs', {
+            username: answer.username,
+            question_title: answer.question_title,
+            asker: answer.question_username,
+        }, (err, html) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
                 console.log(err);
                 return;

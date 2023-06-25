@@ -8,9 +8,18 @@ import { User, MailConfig, MailOptions, AcceptedAnswer } from '../interfaces';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
+// let config: MailConfig = {
+//     host: 'smtp.google.com',
+//     service: 'gmail',
+//     port: 587,
+//     auth: {
+//         user: process.env.EMAIL as string,
+//         pass: process.env.EMAIL_PWD as string,
+//     },
+// };
+
 let config: MailConfig = {
-    host: 'smtp.google.com',
-    service: 'gmail',
+    host: 'smtp.zoho.com',
     port: 587,
     auth: {
         user: process.env.EMAIL as string,

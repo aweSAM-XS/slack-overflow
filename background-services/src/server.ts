@@ -1,4 +1,3 @@
-import express from 'express';
 import cron from 'node-cron';
 import {
     sendAnswerAcceptedEmail,
@@ -7,11 +6,6 @@ import {
 } from './SendEmail';
 import { DatabaseHelper } from './DatabaseHelper';
 import { AcceptedAnswer, User } from './interfaces';
-import { emailRoute, passwordRoute } from './routes';
-
-const app = express();
-app.use('/confirm-email', emailRoute);
-app.use('/reset-password', passwordRoute);
 
 cron.schedule('*/15 * * * * *', async () => {
     console.log('Watching DB 👀');
@@ -35,8 +29,4 @@ cron.schedule('*/15 * * * * *', async () => {
         await DatabaseHelper.exec(`GetAcceptedAnswers`)
     ).recordset;
     sendAnswerAcceptedEmail(acceptedAnswers);
-});
-
-app.listen(8008, () => {
-    console.log('App is Running');
 });
