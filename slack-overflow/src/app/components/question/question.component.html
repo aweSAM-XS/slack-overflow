@@ -1,0 +1,17 @@
+<div class="question" *ngIf="question$ | async as question">
+  <div class="meta">
+    <p>{{ question.score }} votes</p>
+    <p>{{ question.answer_count }} answers</p>
+    <p>{{ question.score }} views</p>
+  </div>
+  <div class="question-content">
+    <h3>{{ question.title }}</h3>
+    <p>{{ question.body }}</p>
+    <div class="tags">
+      <ng-container *ngFor="let tag of question.tags">
+        <p class="tag">{{ tag }}</p>
+      </ng-container>
+      <div class="user"></div>
+    </div>
+  </div>
+</div>

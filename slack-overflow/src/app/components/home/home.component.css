@@ -43,6 +43,11 @@ aside p {
   flex-grow: 1;
 }
 
+.divider {
+  width: 3px;
+  background-color: var(--silver);
+}
+
 @media (max-width: 800px) {
   .home {
     flex-direction: column;
@@ -50,7 +55,7 @@ aside p {
   aside {
     flex-direction: row;
     justify-content: space-around;
-    top: 0;
+    position: inherit;
   }
   aside * {
     min-width: 25%;
@@ -64,9 +69,4 @@ aside p {
   aside p {
     display: none;
   }
-}
-
-.divider {
-  width: 3px;
-  background-color: var(--silver);
 }
