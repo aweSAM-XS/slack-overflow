@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { getQuestions } from 'src/app/store/actions/questionActions';
 import { QuestionsService } from 'src/app/services/questions.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-questions',
@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 })
 export class QuestionsComponent implements OnInit {
   store = inject(Store<AppState>);
+  router = inject(Router)
   questionsService = inject(QuestionsService);
   questions$!: Observable<Question[]>;
   questions!: Question[];
@@ -32,5 +33,9 @@ export class QuestionsComponent implements OnInit {
   loadQuestions() {
     this.store.dispatch(getQuestions());
     this.questions$ = this.store.select((state) => state.questions.questions);
+  }
+
+  seeQuestion(id:String) {
+    this.router.navigate([`/questions/${id}`])
   }
 }

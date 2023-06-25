@@ -1,8 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { QuestionsService } from 'src/app/services/questions.service';
 import * as QuestionActions from '../actions/questionActions';
-import { catchError, map, mergeMap, of, tap } from 'rxjs';
+import { catchError, map, mergeMap, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,4 +28,22 @@ export class QuestionEffects {
       })
     );
   });
+
+  getQuestion$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(QuestionActions.getQuestion),
+      mergeMap((action) =>
+        this.questionService.getQuestion(action.id).pipe(
+          map((question) => {
+            return QuestionActions.getQuestionSuccess({
+              currentQuestion: question,
+            });
+          }),
+          catchError((error: any) =>
+            of(QuestionActions.getQuestionFailure(error))
+          )
+        )
+      )
+    )
+  );
 }

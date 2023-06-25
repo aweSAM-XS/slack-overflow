@@ -1,0 +1,17 @@
+<div class="user-container" *ngIf="user">
+	<h1>{{ user.display_name }}</h1>
+	<div class="user-details">
+	  <div class="user-info">
+		<img [src]="user.profile_image" alt="User Avatar" class="avatar" />
+		<div class="user-meta">
+		  <p><strong>Answers:</strong> {{ user.answered }}</p>
+		  <p><strong>Location:</strong> {{ user.location }}</p>
+		</div>
+	  </div>
+	  <div class="user-bio">
+		<h2>Bio:</h2>
+		<p>Member Since {{ user.creation_date }}</p>
+	  </div>
+	</div>
+  </div>
+  

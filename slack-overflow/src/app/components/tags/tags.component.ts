@@ -16,7 +16,7 @@ import { TagsService } from 'src/app/services/tags.service';
   styleUrls: ['./tags.component.css'],
 })
 export class TagsComponent implements OnInit {
-  store = inject(Store<AppState>)
+  store = inject(Store<AppState>);
   tagsService = inject(TagsService);
   tags$!: Observable<Tag[]>;
   tags!: Tag[];
@@ -32,8 +32,5 @@ export class TagsComponent implements OnInit {
   loadTags() {
     this.store.dispatch(getTags());
     this.tags$ = this.store.select((state) => state.tags.tags);
-    this.tags$.subscribe((Tags) => {
-      console.log(Tags);
-    });
   }
 }

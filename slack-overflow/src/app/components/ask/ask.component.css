@@ -23,11 +23,12 @@ form {
   width: 100%;
 }
 
-input, textarea {
-  outline: .5px solid var(--black-200);
+input,
+textarea {
+  outline: 0.5px solid var(--black-200);
   border: transparent;
   padding: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .additional {
@@ -39,8 +40,10 @@ input, textarea {
   background-color: var(--silver);
 }
 
-.tags {
+.tags,
+.suggestions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -55,17 +58,26 @@ input, textarea {
 }
 
 .tag:hover {
-  background-color: var(--blue-200);
+  background-color: var(--red-200);
+  border: var(--red-500);
   scale: 1.1;
   font-weight: 700;
 }
 
-input:disabled{
-  cursor: not-allowed; 
+.suggestions .tag:hover {
+  border: var(--blue-500);
+  background-color: var(--blue-200);
+}
+
+input:disabled {
+  cursor: not-allowed;
 }
 
 @media screen and (max-width: 768px) {
   .btn-primary {
     width: 100%;
+  }
+  form {
+    width: calc(100svw - 4rem);
   }
 }

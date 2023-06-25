@@ -45,6 +45,10 @@
         </p>
       </div>
       <label for="tags">Tags</label>
+      <p>
+        Add up to 5 tags to describe what your question is about. Start typing
+        to see suggestions. Press enter to accept a tag
+      </p>
       <input
         id="tags"
         name="tags"
@@ -52,8 +56,14 @@
         [(ngModel)]="newTag"
         [ngModelOptions]="{ standalone: true }"
         (keyup.enter)="addTag()"
+        (ngModelChange)="sam()"
         [disabled]="tags.length === 5"
       />
+      <div class="suggestions" *ngIf="tagSuggestions$ | async as tagSuggestions">
+        <p class="tag" *ngFor="let suggestion of tagSuggestions" (click)="addSuggestedTag(suggestion.name)">
+          {{ suggestion.name }}
+        </p>
+      </div>
       <div class="error-msg" *ngIf="tags.length === 5">
         <p>You can only add 5 tags. Click on a tag to remove it</p>
       </div>
