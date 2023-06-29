@@ -1,11 +1,8 @@
-import { Request,  Response } from 'express';
+import { Request, Response } from 'express';
 import { v4 as uuid } from 'uuid';
 import { Question } from '../interfaces';
 import { DatabaseHelper } from '../databaseHelper';
 import Joi from 'joi';
-
-
-// Add question
 
 export const addQuestion = async (req: Request, res: Response) => {
     try {
@@ -42,8 +39,15 @@ export const addQuestion = async (req: Request, res: Response) => {
 
 export const getAllQuestions = async (req: Request, res: Response) => {
     try {
+        const { page_size, page_number } = req.query as {
+            page_size: string;
+            page_number: string;
+        };
         let questions: Question[] = (
-            await DatabaseHelper.exec('GetAllQuestions')
+            await DatabaseHelper.exec('GetAllQuestions', {
+                page_size,
+                page_number,
+            })
         ).recordset;
         return res.status(200).json(questions);
     } catch (error: any) {
@@ -66,10 +70,7 @@ export const getUserQuestions = async (
     }
 };
 
-export const getQuestionById = async (
-    req: Request,
-    res: Response
-) => {
+export const getQuestionById = async (req: Request, res: Response) => {
     try {
         const { question_id } = req.params;
         let question: Question = (
@@ -80,6 +81,18 @@ export const getQuestionById = async (
         } else {
             return res.status(404).json({ message: 'Question Not Found' });
         }
+    } catch (error: any) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+export const getQuestionsByTagName = async (req: Request, res: Response) => {
+    try {
+        const { tag_name } = req.params;
+        let questions: Question[] = (
+            await DatabaseHelper.exec('GetQuestionsByTag', { tag_name })
+        ).recordset;
+        return res.status(200).json(questions);
     } catch (error: any) {
         return res.status(500).json({ message: error.message });
     }

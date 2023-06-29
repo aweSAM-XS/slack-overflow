@@ -19,6 +19,17 @@ export const addTag = async (req: Request, res: Response) => {
     }
 };
 
+// Get Tags
+export const getAllTags = async (req: Request, res: Response) => {
+    try {
+        let tags: Tag[] = (await DatabaseHelper.exec('GetAllTags'))
+            .recordset;
+        return res.status(200).json(tags);
+    } catch (error) {
+        return res.status(500).json({ message: error?.toString() });
+    }
+};
+
 // Get Tag By Id
 export const getTagById = async (req: Request, res: Response) => {
     try {
@@ -60,7 +71,7 @@ export const updateTag = async (req: Request, res: Response) => {
     }
 };
 
-// Delete comment
+// Delete Tag
 export const deleteTag = async (req: Request, res: Response) => {
     try {
         const { tag_id } = req.params;

@@ -14,6 +14,7 @@ export const addAnswer = async (req: Request, res: Response) => {
         let question: Question = (
             await DatabaseHelper.exec('GetQuestionById', { question_id })
         ).recordset[0];
+        console.log(user);
         if (question) {
             await DatabaseHelper.exec('CreateAnswer', {
                 answer_id,

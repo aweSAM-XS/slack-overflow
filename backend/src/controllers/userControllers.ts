@@ -34,10 +34,9 @@ export const registerUser = async (req: Request, res: Response) => {
             token,
             payload: { user_id, username, email, role: 'user' },
         });
-    } catch (error) {
-        console.error('Error registering user:', error);
+    } catch (error: any) {
         res.status(500).json({
-            error: 'An error occurred while registering user.',
+            message: error.message,
         });
     }
 };
@@ -71,8 +70,8 @@ export const loginUser = async (req: Request, res: Response) => {
 
         const payload = user.map((u) => {
             const {
+                email,
                 password,
-                username,
                 is_deleted,
                 is_approved,
                 email_sent,
@@ -100,7 +99,13 @@ export const loginUser = async (req: Request, res: Response) => {
 //Get all users
 export const getUsers: RequestHandler = async (req, res) => {
     try {
-        const users = (await DatabaseHelper.exec('GetAllUsers')).recordset;
+        const { page_size, page_number } = req.query as {
+            page_size: string;
+            page_number: string;
+        };
+        const users = (
+            await DatabaseHelper.exec('GetAllUsers', { page_size, page_number })
+        ).recordset;
         if (users.length > 0) {
             return res.status(200).json(users);
         }
@@ -193,14 +198,10 @@ export const changePassword = async (req: Request, res: Response) => {
 // Reset Password
 export const resetPassword = async (req: Request, res: Response) => {
     try {
-        const {user_id} = req.body
-        const {password} = req.body
-        await DatabaseHelper.exec('ResetPassword', {user_id, password})
-        
-    } catch (error) {
-        
-    }
-
+        const { user_id } = req.body;
+        const { password } = req.body;
+        await DatabaseHelper.exec('ResetPassword', { user_id, password });
+    } catch (error) {}
 };
 
 // Delete user

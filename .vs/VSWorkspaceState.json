@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\database",
+    "\\backend\\src",
+    "\\backend\\src\\controllers",
+    "\\backend\\src\\databaseHelper"
+  ],
+  "SelectedNode": "\\backend\\src\\databaseHelper\\index.ts",
+  "PreviewInSolutionExplorer": false
+}

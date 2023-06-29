@@ -34,19 +34,17 @@ export interface ExtendedRequest extends Request {
 }
 
 export interface Question {
-    tags: string[];
-    user_id: string;
-    is_answered: boolean;
-    view_count: number;
-    accepted_answer_id: string;
-    answer_count: number;
-    score: number;
-    creation_date: number;
-    last_edit_date: number;
     question_id: string;
-    title: string;
-    body: string;
-}
+    user_id: string;
+    question_title: string;
+    question_body: string;
+    creation_date: string;
+    edit_date: string | null;
+    is_deleted: boolean;
+    answer_count: number;
+    question_tags: Array<{ tag_id: string, tag_name: string }>;
+  }
+  
 
 export interface userPayload {
     user_id: string;
@@ -59,11 +57,12 @@ export interface userPayload {
 export interface Answer {
     answer_id: string;
     user_id: string;
-    question_id: string;
+    username: string;
     answer_body: string;
-    is_accepted: string;
-    created_on: Date;
-}
+    create_date: string;
+    vote_count: number;
+  }
+  
 
 export interface Comment {
     comment_id: string;

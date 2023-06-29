@@ -4,9 +4,9 @@ POST http://localhost:6900/users/
 Content-Type: application/json
 
 {
-    "username" : "saint_joe",
-    "email": "jonathanndambuki16@gmail.com",
-    "password": "Password123!"
+    "username" : "don_joe",
+    "email": "don_joe@example.com",
+    "password": "PA55word!"
 }
 
 ### Login User
@@ -14,8 +14,8 @@ POST  http://localhost:6900/users/login
 Content-Type: application/json
 
 {
-    "email": "jonathanndambuki16@gmail.com",
-    "password": "Password123!"
+    "email": "don_joe@example.com",
+    "password": "PA55word!"
 }
 
 ### Password reset
@@ -32,30 +32,29 @@ Content-Type: application/json
 
 {
     "email": "sam.kiprop23@gmail.com",
-    "password": "awesamity"
+    "password": "PA55word!"
 }
 
 
 
 ### Get all users
-GET  http://localhost:6900/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
-
+GET  http://localhost:6900/users?page_size=3&page_number=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 ### Get user by ID
-GET  http://localhost:6900/users/user?user_id=c4a7e104-8fb7-4e7b-8f6c-153c0b3ab56c
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzNTE4MiwiZXhwIjoxNjg3NDY0NzgyfQ.IAoYVEbXQdunKvVQRgRjZFmOcPVziEgPFPUr1hcrICw
+GET  http://localhost:6900/users/user?user_id=18d5c78c-d875-4c86-bc7b-4ac4b479e403
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 ### Get user by email
 GET  http://localhost:6900/users/mail?email=natoner999@aaorsi.com
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 ### Update user
 PUT http://localhost:6900/users/12965deb-b09e-4dd1-8555-17a6e124c1cc
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzNjg0NywiZXhwIjoxNjg3NDY2NDQ3fQ.8N0dSRAs5amWXJ86qHdpc_hiPbkm-L6cF20RUXc2FUw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 {
 	"username": "don_joe",
@@ -70,7 +69,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 
 ### Delete user
 DELETE  http://localhost:6900/users/12965deb-b09e-4dd1-8555-17a6e124c1cc
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjViZWQtYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJzYW0ua2lwcm9wMjNAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg3MzM3MjQ3LCJleHAiOjE2ODc0NjY4NDd9.01vVZyOzgnRS14SRhfKJ2P6I6Utn4S10hUdCcSNvk10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 
@@ -78,7 +77,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 ### Add question
 POST http://localhost:6900/questions/ask
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjViZWQtYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJzYW0ua2lwcm9wMjNAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg3NDI4NTM1LCJleHAiOjE2ODc1NTgxMzV9.y3F2x4CyO3RuzVhZ4VGFTXqerloxdktjhc2qJFeHohM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 {
@@ -91,23 +90,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
    }
 
 ### Get all questions
-
-GET http://localhost:6900/questions
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+GET  http://localhost:6900/questions?page_size=300&page_number=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 ### Get questions by one User 
 GET http://localhost:6900/questions/user/12965deb-b09e-4dd1-8555-17a6e124c1cc
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
+
+### Get questions by tag
+GET http://localhost:6900/questions/tag/shell
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
+
 
 ### Get one question
-GET http://localhost:6900/questions/3f95ddfa-d0ba-4f44-8c75-35808519755d
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+GET http://localhost:6900/questions/3141bf63-7d31-4a47-aacf-85e29227775d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 ### Update question
-
 PUT http://localhost:6900/questions/3f95ddfa-d0ba-4f44-8c75-35808519755d
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTJjNmU1YjQtZGRiNS00MmJjLWFjYWQtOGU5ZDQ3YTI5MTdkIiwidXNlcm5hbWUiOiJkb25fam9lIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODgwNjM4MDAsImV4cCI6MTY4ODE5MzQwMH0.uduWODv8ry6Wd0mo2AbuD8HsMmyEx3br37DNIlh3I_g
 
 {
     "question_title":"What did one awesome computer say to the other?", 
@@ -123,33 +125,33 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 
 ### Delete question
 DELETE http://localhost:6900/questions/delete/12965bed-b09e-4dd1-8555-17a6e124c1cc
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 ############  Answers  #####################
 
 #### Create Answer
-POST http://localhost:6900/answers/71db5f1f-5f73-4bc1-9227-05e3643188b0
+POST http://localhost:6900/answers/c67b1f17-82cd-4af6-adfe-ed65c0e0a033
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTJjNmU1YjQtZGRiNS00MmJjLWFjYWQtOGU5ZDQ3YTI5MTdkIiwidXNlcm5hbWUiOiJkb25fam9lIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODgwNjM4MDAsImV4cCI6MTY4ODE5MzQwMH0.uduWODv8ry6Wd0mo2AbuD8HsMmyEx3br37DNIlh3I_g
 
 {
-    "answer_body": "The middle name"
+    "answer_body": "Question: What is Go?\nAnswer: Go, also known as Golang, is an open-source programming language developed by Google. It is designed for simplicity, efficiency, and ease of use.\n\nQuestion: How do you declare a variable in Go?\nAnswer: In Go, you declare a variable using the var keyword, followed by the variable name and its type. For example: var age int.\n\nQuestion: Can you declare multiple variables in a single statement in Go?\nAnswer: Yes, you can declare multiple variables in a single statement using the following syntax: var a, b, c int."
 }
 
+
 ### Get answers of a question 
-GET http://localhost:6900/answers/71db5f1f-5f73-4bc1-9227-05e3643188b0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+GET http://localhost:6900/answers/02c5e1d8-038c-4a90-858d-c98c2e7bf833
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 ### Get answers by user
 GET http://localhost:6900/answers/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 ### Accept an answer
 POST http://localhost:6900/answers/accept/f33679db-6c0c-4471-b106-414e72dec03b
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjViZWQtYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJzYW0ua2lwcm9wMjNAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg3NDI4NTM1LCJleHAiOjE2ODc1NTgxMzV9.y3F2x4CyO3RuzVhZ4VGFTXqerloxdktjhc2qJFeHohM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 {
@@ -160,14 +162,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 ### Delete an answer
 DELETE  http://localhost:6900/answers/delete/0da1a6d4-0ccb-4eb5-a9cd-412c3d749448
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 ############  Comments  #####################
 ### Add comment
 POST http://localhost:6900/comments/f33679db-6c0c-4471-b106-414e72dec03b
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 {
@@ -178,15 +180,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 
 ### Get Comments By Answer
 GET http://localhost:6900/comments/f33679db-6c0c-4471-b106-414e72dec03b
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 ### Get Comments By User
 GET http://localhost:6900/comments/user/12965deb-b09e-4dd1-8555-17a6e124c1cc
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 ### Delete Comment
 DELETE  http://localhost:6900/comments/12965bed-b09e-4dd1-8555-17a6e124c1cc
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 
@@ -194,7 +196,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 ### Create vote
 POST http://localhost:6900/votes/f33679db-6c0c-4471-b106-414e72dec03b
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 {
     "vote_type": "downvote"
@@ -203,11 +205,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5N
 ### Get votes by Answer
 GET http://localhost:6900/votes/f33679db-6c0c-4471-b106-414e72dec03b
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
 
 ### Get votes by User
 GET http://localhost:6900/votes/user
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTI5NjVkZWItYjA5ZS00ZGQxLTg1NTUtMTdhNmUxMjRjMWNjIiwiZW1haWwiOiJuYXRvbmVyOTk5QGFhb3JzaS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzMzMTUxOSwiZXhwIjoxNjg3NDYxMTE5fQ.iCKmrnivw1qWQ_Oe2eWhjuLVGnbLgv9hXSFfjDqQZqg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODhlZmZjYjgtOThlNy00MTAxLWIwYzQtYmE0Y2VhNTVlNGIxIiwidXNlcm5hbWUiOiJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODc5OTMwNjUsImV4cCI6MTY4ODEyMjY2NX0.YSwW-dT1AWWC2jmAY8WY0AI3Hr9-A_fL7SYDMGxuRoc
 
