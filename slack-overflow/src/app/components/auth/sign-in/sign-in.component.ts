@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AppState } from '../../../store/app.state';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
@@ -21,17 +20,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
+  router = inject(Router);
+  formBuilder = inject(FormBuilder);
+  store = inject(Store<AppState>);
   signInForm!: FormGroup;
   forgotPasswordForm!: FormGroup;
   forgot = false;
   emailSent = false;
   errorMessage$!: Observable<string>;
-
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private store: Store<AppState>,
-  ) {}
 
   ngOnInit() {
     let payload = localStorage.getItem('payload');
@@ -42,7 +38,7 @@ export class SignInComponent implements OnInit {
     this.emailSent = false;
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
+      password: ['', [Validators.required]],
     });
     this.forgotPasswordForm = this.formBuilder.group({
       forgotPasswordEmail: ['', [Validators.required, Validators.email]],

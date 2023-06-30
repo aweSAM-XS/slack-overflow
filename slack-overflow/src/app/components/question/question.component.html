@@ -1,17 +1,19 @@
 <div class="question" *ngIf="question$ | async as question">
   <div class="meta">
-    <p>{{ question.score }} votes</p>
     <p>{{ question.answer_count }} answers</p>
-    <p>{{ question.score }} views</p>
+    <p>{{ question.creation_date | relativeDate }}</p>
   </div>
   <div class="question-content">
-    <h3>{{ question.title }}</h3>
-    <p>{{ question.body }}</p>
+    <h3>{{ question.question_title }}</h3>
+    <p>{{ question.question_body }}</p>
     <div class="tags">
-      <ng-container *ngFor="let tag of question.tags">
-        <p class="tag">{{ tag }}</p>
-      </ng-container>
+      <div *ngFor="let tag of parseTags(question.question_tags)" (click)="seeTag(tag.tag_name, $event)">
+        <p class="tag">{{ tag.tag_name }}</p>
+      </div>
       <div class="user"></div>
     </div>
   </div>
+</div>
+<div class="answers">
+  <app-answers></app-answers>
 </div>

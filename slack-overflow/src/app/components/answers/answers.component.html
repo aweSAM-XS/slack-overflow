@@ -1,0 +1,30 @@
+<div class="answer" *ngFor="let answer of answers$ | async">
+  <div class="vote">
+    <div class="upvote">
+      <div class="triangle"></div>
+    </div>
+    <h2>{{ answer.vote_count }}</h2>
+    <div class="downvote">
+      <div class="triangle"></div>
+    </div>
+  </div>
+  <div class="answer-details">
+    <p>{{ answer.answer_body }}</p>
+    <div class="answer-meta">
+      <div class="comment">
+        <p>{{ answer.vote_count }} comments</p>
+        <p>Add a comment</p>
+      </div>
+      <div class="profile" (click)="seeUser(answer.user_id)">
+        <img
+          src="https://robohash.org/{{ answer.username }}?set=set2"
+          alt="{{ answer.username }}"
+        />
+        <div class="profile-text">
+          <p>@{{ answer.username }}</p>
+          <p>{{ answer.create_date | relativeDate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

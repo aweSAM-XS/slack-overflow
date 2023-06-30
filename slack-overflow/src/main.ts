@@ -19,6 +19,8 @@ import { TagsReducer } from './app/store/reducers/tagsReducer';
 import { TagEffects } from './app/store/effects/tag-effects.service';
 import { UserEffects } from './app/store/effects/user-effects.service';
 import { usersReducer } from './app/store/reducers/usersReducer';
+import { answerReducer } from './app/store/reducers/answersReducer';
+import { AnswerEffects } from './app/store/effects/answer-effects.service';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -28,10 +30,11 @@ bootstrapApplication(AppComponent, {
       auth: authReducer,
       questions: questionsReducer,
       tags: TagsReducer,
-      users: usersReducer
+      users: usersReducer,
+      answers: answerReducer,
     }),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideEffects(AuthEffects, QuestionEffects, TagEffects, UserEffects),
+    provideEffects(AuthEffects, QuestionEffects, TagEffects, UserEffects, AnswerEffects),
     provideHttpClient(withInterceptorsFromDi()),
     AuthService,
   ],

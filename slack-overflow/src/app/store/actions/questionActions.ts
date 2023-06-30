@@ -1,43 +1,59 @@
 import { createAction, props } from '@ngrx/store';
-import { Question } from 'src/app/interface';
+import { NewQuestion, Question } from 'src/app/interface';
 
 //get all Questions
 export const getQuestions = createAction('[Questions] Get All Questions');
 
 export const getQuestionsSuccess = createAction(
-  '[Questions API] Questions Load Success',
+  '[Questions] Questions Load Success',
   props<{ questions: Question[] }>()
 );
 export const getQuestionsFailure = createAction(
-  '[Questions API] Questions Load Failure',
+  '[Questions] Questions Load Failure',
   props<{ error: any }>()
 );
 
 //add Question
 export const addQuestion = createAction(
   '[Questions] Add Question',
-  props<{ newQuestion: Question }>()
+  props<{ question: NewQuestion }>()
 );
 export const addQuestionSuccess = createAction(
-  '[Add Question API] Add Question Success',
+  '[Questions] Add Question Success',
   props<{ message: string }>()
 );
 export const addQuestionFailure = createAction(
-  '[Add Question API] Add Question Failure',
+  '[Questions] Add Question Failure',
   props<{ error: string }>()
 );
 
 //get one Question
 export const getQuestion = createAction(
-  '[Products] Get one Question',
+  '[Questions] Get one Question',
   props<{ id: string }>()
 );
 export const getQuestionSuccess = createAction(
-  '[Questions API] Questions Load Success',
-  props<{ currentQuestion: Question | undefined }>()
+  '[Questions] Question Load Success',
+  props<{ currentQuestion: Question }>()
 );
 export const getQuestionFailure = createAction(
-  '[Questions API] Questions Load Failure',
+  '[Questions] Question Load Failure',
+  props<{ error: string }>()
+);
+
+// Get Questions by Tag
+export const getQuestionsByTagName = createAction(
+  '[Questions] Get Questions By Tag Name',
+  props<{ tag_name: string }>()
+);
+
+export const getQuestionsByTagNameSuccess = createAction(
+  '[Questions] Get Questions By Tag Name Success',
+  props<{ questions: Question[] }>()
+);
+
+export const getQuestionsByTagNameFailure = createAction(
+  '[Questions] Get Questions By Tag Name Failure',
   props<{ error: string }>()
 );
 
@@ -47,10 +63,10 @@ export const deleteQuestion = createAction(
   props<{ name: string }>()
 );
 export const deleteQuestionSuccess = createAction(
-  '[Questions API] Delete Question Success',
+  '[Questions] Delete Question Success',
   props<{ message: string }>()
 );
 export const deleteQuestionFailure = createAction(
-  '[Questions API] Delete Question Failure',
+  '[Questions] Delete Question Failure',
   props<{ error: string }>()
 );

@@ -64,7 +64,23 @@ p {
   width: 200px;
   align-items: center;
   justify-content: center;
+  flex: 1;
 }
+
+.question-content {
+  flex: 3;
+}
+
+/* .question-body{
+  max-height: 75px;
+  overflow: hidden;
+  position: relative;
+}
+
+.question-body::after{
+  content: '...';
+  height: 10%;
+} */
 
 .tags {
   gap: 1rem;

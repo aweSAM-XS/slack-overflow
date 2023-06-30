@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Tag } from 'src/app/interface';
+import { Question, Tag } from 'src/app/interface';
 
 //get all tags
 export const getTags = createAction('[Tags] Get All Tags');
@@ -34,6 +34,20 @@ export const getTagSuccess = createAction(
 );
 export const getTagFailure = createAction(
   '[Tags API] Tags Load Failure',
+  props<{ error: string }>()
+);
+
+//set current tag
+export const getCurrentTag = createAction(
+  '[Products] Get one Tag',
+  props<{ tag_name: string }>()
+);
+export const getCurrentTagSuccess = createAction(
+  '[Products] Get one Tag Success',
+  props<{ tag: Tag }>()
+);
+export const getCurrentTagFailure = createAction(
+  '[Products] Get one Tag Failure',
   props<{ error: string }>()
 );
 

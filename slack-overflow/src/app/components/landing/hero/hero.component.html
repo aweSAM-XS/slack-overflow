@@ -1,0 +1,105 @@
+<div class="questions-content">
+  <div class="questions-header">
+    <h3 class="question-title">
+      Questions are everywhere, answers are on Slack Overflow
+    </h3>
+  </div>
+  <div class="questions-body">
+    <div class="questions-body-items " #questionItems>
+      <div
+        class="questions-body-item"
+        [attr.data-id]="0"
+        (click)="selectItem(0)"
+      >
+        <img
+          src="https://cdn.sstatic.net/Img/home/ask-a-question.svg?v=f4f2050b0297"
+          alt=""
+          class="question-item-icon"
+        />
+        <div class="question-item-text">Ask a question</div>
+        <div class="question-arrow-right"></div>
+      </div>
+      <div
+        class="questions-body-item"
+        [attr.data-id]="1"
+        (click)="selectItem(1)"
+      >
+        <img
+          src="https://cdn.sstatic.net/Img/home/votes.svg?v=748a8f48a8e2"
+          alt=""
+          class="question-item-icon"
+        />
+        <div class="question-item-text">Vote on everything</div>
+        <div class="question-arrow-right"></div>
+      </div>
+      <div
+        class="questions-body-item"
+        [attr.data-id]="2"
+        (click)="selectItem(2)"
+      >
+        <img
+          src="https://cdn.sstatic.net/Img/home/answer.svg?v=4cd8048a676c"
+          alt=""
+          class="question-item-icon"
+        />
+        <div class="question-item-text">Answer questions</div>
+        <div class="question-arrow-right"></div>
+      </div>
+    </div>
+    <div class="questions-body-item-content">
+      <img
+        [src]="questionContentImg"
+        alt=""
+        class="question-item-content-img"
+      />
+      <h4 class="question-item-content-text">
+        Accept the answer which solved your problem to let others benefit from
+        the valuable information.
+      </h4>
+      <a routerLink="questions" class="btn btn-orange question-item-content-btn"
+        >Checkout the questions</a
+      >
+    </div>
+    <div class="questions-body-items">
+      <div
+        class="questions-body-item"
+        [attr.data-id]="3"
+        (click)="selectItem(3)"
+      >
+        <img
+          src="https://cdn.sstatic.net/Img/home/tags.svg?v=913379eb09eb"
+          alt=""
+          class="question-item-icon"
+        />
+        <div class="question-item-text">Tag your question</div>
+        <div class="question-arrow-left"></div>
+      </div>
+      <div
+        class="questions-body-item"
+        [attr.data-id]="4"
+        (click)="selectItem(4)"
+      >
+        <img
+          src="https://cdn.sstatic.net/Img/home/accept.svg?v=27d5be078970"
+          alt=""
+          class="question-item-icon"
+        />
+        <div class="question-item-text">Accept an answer</div>
+        <div class="question-arrow-left"></div>
+      </div>
+      <div
+        class="questions-body-item"
+        [attr.data-id]="5"
+        (click)="selectItem(5)"
+      >
+        <img
+          src="https://cdn.sstatic.net/Img/home/get-recognized.svg?v=3b339d9aa10c"
+          alt=""
+          class="question-item-icon"
+        />
+        <div class="question-item-text">Get recognized</div>
+        <div class="question-arrow-left"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,11 +6,8 @@ import { url } from './utils';
 
 @Injectable()
 export class AuthService {
-  // private http = inject(HttpClient);
+  private http = inject(HttpClient);
   private url = `${url}/users`;
-
-  
-  constructor(private http: HttpClient) { }
 
   signUp(payload: UserSignUp): Observable<UserAuthSuccess> {
     return this.http.post<UserAuthSuccess>(this.url, payload);

@@ -16,4 +16,8 @@ export class TagsService {
   getTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>(this.url, { headers: this.headers });
   }
+
+  getTag(tag_name: string) {
+    return this.http.get<Tag>(`${this.url}/${tag_name}`, { headers: this.headers })
+  }
 }

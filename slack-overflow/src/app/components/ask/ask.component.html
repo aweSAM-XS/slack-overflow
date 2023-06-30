@@ -1,6 +1,10 @@
 <section class="ask">
   <h2>Ask a Question</h2>
-  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+  <form
+    [formGroup]="questionForm"
+    (ngSubmit)="onSubmit()"
+    (keydown.enter)="$event.preventDefault()"
+  >
     <div class="form-group">
       <div class="input"></div>
       <label>Title:</label>
@@ -41,7 +45,7 @@
     <div class="additional">
       <div class="tags" *ngIf="tags">
         <p class="tag" *ngFor="let tag of tags" (click)="removeTag(tag)">
-          {{ tag }}
+          {{ tag.tag_name }}
         </p>
       </div>
       <label for="tags">Tags</label>
@@ -59,9 +63,13 @@
         (ngModelChange)="sam()"
         [disabled]="tags.length === 5"
       />
-      <div class="suggestions" *ngIf="tagSuggestions$ | async as tagSuggestions">
-        <p class="tag" *ngFor="let suggestion of tagSuggestions" (click)="addSuggestedTag(suggestion.name)">
-          {{ suggestion.name }}
+      <div class="suggestions">
+        <p
+          *ngFor="let suggestion of sam() | async"
+          (click)="addSuggestedTag(suggestion)"
+          class="tag"
+        >
+          {{ suggestion.tag_name }}
         </p>
       </div>
       <div class="error-msg" *ngIf="tags.length === 5">

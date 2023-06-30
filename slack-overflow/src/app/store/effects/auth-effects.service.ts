@@ -19,7 +19,7 @@ export class AuthEffects {
           map((response) => {
             localStorage.setItem('token', response.token);
             localStorage.setItem('payload', JSON.stringify(response.payload));
-            this.router.navigate(['']);
+            this.router.navigate(['/questions']);
             return AuthActions.signUpSuccess({ message: response.message });
           }),
           catchError((error) => {

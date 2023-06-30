@@ -2,9 +2,13 @@ import { Routes } from '@angular/router';
 
 export const ROUTES: Routes = [
   {
-    path: 'home', loadComponent: () => {
-    return import('./app/components/landing/landing.component').then(c=>c.LandingComponent)
-  } },
+    path: 'home',
+    loadComponent: () => {
+      return import('./app/components/landing/landing.component').then(
+        (c) => c.LandingComponent
+      );
+    },
+  },
   {
     path: 'auth',
     loadChildren: () => {
@@ -23,5 +27,12 @@ export const ROUTES: Routes = [
   },
   { path: 'signup', redirectTo: '/auth/signup', pathMatch: 'full' },
   { path: 'signin', redirectTo: '/auth/signin', pathMatch: 'full' },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: '**',
+    loadComponent: () => {
+      return import(
+        './app/components/page-not-found/page-not-found.component'
+      ).then((c) => c.PageNotFoundComponent);
+    },
+  },
 ];

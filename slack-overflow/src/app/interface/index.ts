@@ -44,8 +44,7 @@ export interface UserAuthSuccess {
   token: string;
   message: string;
   payload: {
-    firstName: string;
-    id: string;
+    username: string;
     role: string;
   };
 }
@@ -58,28 +57,42 @@ export interface userState {
 }
 
 export interface Question {
-  tags: string[];
-  user_id: string;
-  creation_date: number;
-  last_edit_date: number;
   question_id: string;
+  user_id: string;
   question_title: string;
   question_body: string;
+  creation_date: Date;
+  edit_date: string | null;
+  is_deleted: boolean;
+  answer_count: number;
+  question_tags: string;
+  // Array<{ tag_id: string; tag_name: string }>;
+}
+
+export interface NewQuestion {
+  question_title: string;
+  question_body: string;
+  tags: string[];
 }
 
 export interface Answer {
-  is_accepted: boolean;
-  score: number;
-  last_edit_date: number;
-  creation_date: number;
-  answer_id: number;
-  question_id: number;
-  owner_id: number;
+  answer_id: string;
+  user_id: string;
+  username: string;
+  answer_body: string;
+  create_date: Date;
+  vote_count: number;
+}
+
+export interface Success {
+  message: string;
 }
 
 export interface Tag {
+  tag_id: string;
   tag_name: string;
   Tag_description: string;
+  question_count: number;
 }
 
 export interface Comment {
@@ -93,7 +106,7 @@ export interface Comment {
 
 export interface TagsState {
   tags: Tag[];
-  currentTag: string | null;
+  currentTag: Tag | null;
   loading: boolean;
   error: string | null;
 }
@@ -101,6 +114,7 @@ export interface TagsState {
 export interface QuestionsState {
   questions: Question[];
   currentQuestion: Question | undefined;
+  questionTags: Question[] | null;
   loading: boolean;
   error: string | null;
 }

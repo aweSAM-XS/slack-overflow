@@ -26,5 +26,9 @@ export const TagsReducer = createReducer(
     ...state,
     loading: false,
     error,
+  })),
+  on(TagActions.getCurrentTagSuccess, (state, { tag }) => ({
+    ...state,
+    currentTag: tag,
   }))
 );

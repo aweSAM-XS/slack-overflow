@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../interface';
 import { url, headers } from './utils';
 
@@ -21,6 +21,6 @@ export class UsersService {
   }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(`${this.url}/${id}`, { headers: this.headers });
+    return this.http.get<User>(`${this.url}/user?user_id=${id}`, { headers: this.headers });
   }
 }

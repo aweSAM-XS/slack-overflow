@@ -5,6 +5,7 @@ import { QuestionsState } from 'src/app/interface';
 export const initialState: QuestionsState = {
   questions: [],
   currentQuestion: undefined,
+  questionTags: null,
   loading: false,
   error: null,
 };
@@ -42,5 +43,21 @@ export const questionsReducer = createReducer(
     ...state,
     loading: false,
     error,
-  }))
+  })),
+  on(QuestionsActions.getQuestionsByTagName, (state) => ({
+    ...state,
+    loading: true,
+    error: null,
+  })),
+  on(QuestionsActions.getQuestionsByTagNameSuccess, (state, { questions }) => ({
+    ...state,
+    questionTags: questions,
+    loading: false,
+    error: null,
+  })),
+  on(QuestionsActions.getQuestionsByTagNameFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
 );

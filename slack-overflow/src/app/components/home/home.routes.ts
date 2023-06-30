@@ -6,12 +6,19 @@ import { UsersComponent } from '../users/users.component';
 import { AskComponent } from '../ask/ask.component';
 import { QuestionComponent } from '../question/question.component';
 import { UserComponent } from '../user/user.component';
+import { HeroComponent } from '../landing/hero/hero.component';
+import { TagComponent } from '../tag/tag.component';
 
 export const HOME_ROUTES: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: '',
+        component: HeroComponent,
+        pathMatch: "full"
+      },
       {
         path: 'questions',
         component: QuestionsComponent,
@@ -31,6 +38,10 @@ export const HOME_ROUTES: Routes = [
       {
         path: 'questions/ask',
         component: AskComponent,
+      },
+      {
+        path: 'questions/tags/:tag_name',
+        component: TagComponent,
       },
       {
         path: 'questions/:id',

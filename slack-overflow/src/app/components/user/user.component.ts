@@ -1,35 +1,39 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/interface';
-import { UsersService } from 'src/app/services/users.service';
 import { getUser } from 'src/app/store/actions/userActions';
 import { AppState } from 'src/app/store/app.state';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LoaderComponent],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  user!: User;
+  route = inject(ActivatedRoute);
+  store = inject(Store<AppState>);
+  user$!: Observable<User>;
   id!: string;
-
-  constructor(
-    private route: ActivatedRoute,
-    private userService: UsersService,
-    private store: Store<AppState>
-  ) {}
+  loading$!: Observable<boolean>;
+  error$!: Observable<string | null>;
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id') as string;
-    this.store.dispatch(getUser({ id: this.id }))
-    // this.user$ = this.store.select(state=>state.)
-    this.userService.getUser(this.id).subscribe((user) => {
-      this.user = user as User;
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      this.loadUser(this.id);
+      this.loading$ = this.store.select((state) => state.users.loading);
+      this.error$ = this.store.select((state) => state.users.error);
     });
+  }
+
+  loadUser(id: string) {
+    this.store.dispatch(getUser({ id }));
+    this.user$ = this.store.select((state) => state.users.currentUser);
   }
 }

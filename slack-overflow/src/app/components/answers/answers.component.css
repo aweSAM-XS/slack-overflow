@@ -1,0 +1,93 @@
+.answer {
+  display: flex;
+  padding: 2rem;
+  border-bottom: silver 1px solid;
+}
+
+.vote,.comment {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.vote h2 {
+  font-size: 2rem;
+}
+
+.answer-details {
+  flex: 8;
+  font-size: small;
+  line-height: 1.5;
+}
+
+.comment {
+  align-items: flex-start;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.comment p {
+  cursor: pointer;
+}
+
+.answer-meta {
+	margin-top: 2rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.answer-meta img {
+  max-height: 50%;
+  max-width: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--orange);
+}
+
+.profile {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	gap: 1rem;
+	background: var(--powder);
+	border: 1px solid var(--blue);
+	padding: 2rem;
+	border-radius: 1rem;
+	font-weight: 700;
+	color: var(--blue);
+	cursor: pointer;
+}
+
+.upvote,
+.downvote {
+  width: 40px;
+  aspect-ratio: 1/1;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  position: absolute;
+}
+
+.upvote .triangle {
+  border-bottom: 40px solid green;
+  top: 0;
+}
+
+.downvote .triangle {
+  border-top: 40px solid red;
+  bottom: 0;
+}

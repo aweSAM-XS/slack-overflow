@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { QuestionsService } from 'src/app/services/questions.service';
 import * as QuestionActions from '../actions/questionActions';
@@ -8,10 +8,24 @@ import { catchError, map, mergeMap, of } from 'rxjs';
   providedIn: 'root',
 })
 export class QuestionEffects {
-  constructor(
-    private questionService: QuestionsService,
-    private actions$: Actions
-  ) {}
+  questionService = inject(QuestionsService);
+  actions$ = inject(Actions);
+
+  addQuestion$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(QuestionActions.addQuestion),
+      mergeMap((action) =>
+        this.questionService.addQuestion(action.question).pipe(
+          map((response) =>
+            QuestionActions.addQuestionSuccess({ message: response.message })
+          ),
+          catchError((error: any) =>
+            of(QuestionActions.addQuestionFailure({ error }))
+          )
+        )
+      )
+    )
+  );
 
   getQuestions$ = createEffect(() => {
     return this.actions$.pipe(
@@ -46,4 +60,20 @@ export class QuestionEffects {
       )
     )
   );
+
+  getQuestionsByTagName$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(QuestionActions.getQuestionsByTagName),
+      mergeMap((action) => {
+        return this.questionService.getQuestionsByTagName(action.tag_name).pipe(
+          map((questions) =>
+            QuestionActions.getQuestionsByTagNameSuccess({ questions })
+          ),
+          catchError((error) =>
+            of(QuestionActions.getQuestionsByTagNameFailure({ error }))
+          )
+        );
+      })
+    );
+  });
 }

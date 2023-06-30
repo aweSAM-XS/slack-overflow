@@ -1,0 +1,29 @@
+<div class="tag tag-heading" *ngIf="tag$ | async as tag">
+  <h3>{{ tag.tag_name }}</h3>
+  <p>{{ tag.Tag_description }}</p>
+</div>
+<div class="questions-list" *ngIf="questions$ | async as questions">
+  <div
+    class="question"
+    *ngFor="let question of questions"
+    (click)="seeQuestion(question.question_id)"
+  >
+    <div class="meta">
+      <p>{{ question.answer_count }} answers</p>
+      <p>{{ question.creation_date | relativeDate }}</p>
+    </div>
+    <div class="question-content">
+      <h3>{{ question.question_title }}</h3>
+      <p>{{ question.question_body }}</p>
+      <div class="extras">
+        <div class="tags">
+          <div *ngFor="let tag of parseTags(question.question_tags)" (click)="seeTag(tag.tag_name, $event)">
+            <p class="tag">{{ tag.tag_name }}</p>
+          </div>
+          <div class="user"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader *ngIf="loading$ | async"></app-loader>
